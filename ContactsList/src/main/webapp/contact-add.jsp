@@ -18,7 +18,7 @@
 		<div class="col-12">
 			<div class="row justify-content-center">
 				<div class="col text-center">
-					<button class="btn btn-outline-primary mt-4">Confirm edit</button>
+					<button class="btn btn-outline-success mt-4">Add</button>
 				</div>
 			</div>
 		</div>
