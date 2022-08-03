@@ -8,6 +8,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet" />
 
+	<!-- Bootstrap Icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
 	<!-- Bootstrap -->
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -16,8 +19,8 @@
 		crossorigin="anonymous"
 	/>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+	<!-- CSS -->
+	<link rel="stylesheet" href="styles.css" />
 
 	<title>Contacts List</title>
 </head>
