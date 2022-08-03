@@ -16,5 +16,8 @@
 		crossorigin="anonymous"
 	/>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
 	<title>Contacts List</title>
 </head>
