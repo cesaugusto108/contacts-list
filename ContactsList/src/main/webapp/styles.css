@@ -19,3 +19,14 @@ footer {
 a {
 	text-decoration: none;
 }
+
+.contacts-home-main {
+    height: 80vh;
+    display: grid;
+    align-items: center;
+}
+
+.contacts-img {
+    border-radius: 50%;
+    width: 360px;
+}
