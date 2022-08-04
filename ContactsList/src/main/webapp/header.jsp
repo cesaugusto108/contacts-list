@@ -5,7 +5,9 @@
 				<a class="navbar-brand" href="#"><h1 class="display-3">Contacts List</h1></a>
 			</div>
 			<div class="col-lg-1 mt-2 mb-2 me-3 text-center">
-				<button class="btn btn-success">Add new contact</button>
+                <a href="add">
+                    <button class="btn btn-success">Add new contact</button>
+                </a>
 			</div>
 		</div>
 	</div>
