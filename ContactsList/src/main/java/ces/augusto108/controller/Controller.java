@@ -1,5 +1,8 @@
 package ces.augusto108.controller;
 
+import ces.augusto108.model.Dao;
+import ces.augusto108.model.entities.Contact;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +11,9 @@ import java.io.IOException;
 
 public class Controller extends HttpServlet {
     private static final long serialVersionUID = 5055545770907679431L;
+
+    Contact contact = new Contact();
+    Dao dao = new Dao();
 
     protected void doGet(
             HttpServletRequest request,
@@ -65,6 +71,12 @@ public class Controller extends HttpServlet {
     ) {
         try {
             response.sendRedirect("index.jsp");
+
+            contact.setContactName(request.getParameter("name"));
+            contact.setEmail(request.getParameter("email"));
+            contact.setTelephone(request.getParameter("telephone"));
+
+            dao.insertContact(contact);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
