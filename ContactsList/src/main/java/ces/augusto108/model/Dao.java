@@ -14,16 +14,9 @@ public class Dao {
     private Connection connect() {
         try {
             Class.forName(driver);
+
             return DriverManager.getConnection(url, user, password);
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void testConnection() {
-        try (Connection connection = connect()) {
-            System.out.println(connection);
-        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
