@@ -7,3 +7,4 @@ CREATE TABLE Contacts (
     	EMAIL varchar(80),
     	TELEPHONE bigint not null
 );
+SELECT * FROM Contacts ORDER BY CONTACT_NAME;
