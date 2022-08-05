@@ -26,7 +26,7 @@ public class Controller extends HttpServlet {
                 listContacts(request, response);
                 break;
             case "/edit":
-                editContact(response);
+                editContact(request, response);
                 break;
             case "/add":
                 addContact(response);
@@ -56,10 +56,15 @@ public class Controller extends HttpServlet {
         }
     }
 
-    private void editContact(HttpServletResponse response) {
+    private void editContact(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.sendRedirect("edit.jsp");
-        } catch (IOException e) {
+            Contact selectedContact = dao.selectContact(request.getParameter("id"));
+
+            request.setAttribute("Contact", selectedContact);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (IOException | ServletException e) {
             throw new RuntimeException(e);
         }
     }

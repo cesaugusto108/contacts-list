@@ -12,7 +12,9 @@
             <div class="col-lg-3">
                 <div class="row justify-content-center">
                     <div class="col text-center">
-                        <button class="btn btn-outline-secondary mt-2">Edit</button>
+                        <a href="edit?id=<%= contactList.get(i).getId() %>">
+                            <button class="btn btn-outline-secondary mt-2">Edit</button>
+                        </a>
                         <button class="btn btn-outline-danger mt-2 ms-2">Delete</button>
                     </div>
                 </div>
