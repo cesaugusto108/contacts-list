@@ -3,11 +3,13 @@ package ces.augusto108.controller;
 import ces.augusto108.model.Dao;
 import ces.augusto108.model.entities.Contact;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class Controller extends HttpServlet {
     private static final long serialVersionUID = 5055545770907679431L;
@@ -21,7 +23,7 @@ public class Controller extends HttpServlet {
     ) throws ServletException {
         switch (request.getServletPath()) {
             case "/Contacts":
-                listContacts(response);
+                listContacts(request, response);
                 break;
             case "/edit":
                 editContact(response);
@@ -34,17 +36,22 @@ public class Controller extends HttpServlet {
                 break;
             default:
                 try {
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("Contacts");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
         }
     }
 
-    private void listContacts(HttpServletResponse response) {
+    private void listContacts(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.sendRedirect("index.jsp");
-        } catch (IOException e) {
+            List<Contact> contactList =  dao.listContacts();
+
+            request.setAttribute("Contacts", contactList);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (IOException | ServletException e) {
             throw new RuntimeException(e);
         }
     }
@@ -70,14 +77,15 @@ public class Controller extends HttpServlet {
             HttpServletResponse response
     ) {
         try {
-            response.sendRedirect("index.jsp");
-
             contact.setContactName(request.getParameter("name"));
             contact.setEmail(request.getParameter("email"));
             contact.setTelephone(request.getParameter("telephone"));
 
             dao.insertContact(contact);
-        } catch (IOException e) {
+
+            response.sendRedirect("Contacts");
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

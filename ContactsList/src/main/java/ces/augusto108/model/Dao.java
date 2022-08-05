@@ -2,10 +2,9 @@ package ces.augusto108.model;
 
 import ces.augusto108.model.entities.Contact;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dao {
     private String driver = "com.mysql.cj.jdbc.Driver";
@@ -35,6 +34,31 @@ public class Dao {
             preparedStatement.setString(3, contact.getTelephone());
 
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Contact> listContacts() {
+        String listContactsQuery = "SELECT * FROM Contacts ORDER BY CONTACT_NAME";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(listContactsQuery);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Contact> contactList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString(1);
+                String contactName = resultSet.getString(2);
+                String email = resultSet.getString(3);
+                String telephone = resultSet.getString(4);
+
+                contactList.add(new Contact(id, contactName, email, telephone));
+            }
+
+            return contactList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -1,7 +1,7 @@
 body {
 	font-family: "Montserrat", sans-serif;
 	background-color: whitesmoke;
-    overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 header {
@@ -9,8 +9,8 @@ header {
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
+    position: fixed;
+    bottom: 0;
 	background-color: #eee;
 	width: 100%;
 	font-size: 0.8rem;
@@ -20,13 +20,18 @@ a {
 	text-decoration: none;
 }
 
-.contacts-home-main {
-    height: 80vh;
-    display: grid;
-    align-items: center;
+.contacts-home_main {
+	height: 80vh;
+	display: grid;
+	align-items: center;
 }
 
 .contacts-img {
-    border-radius: 50%;
-    width: 360px;
+	border-radius: 50%;
+	width: 360px;
 }
+
+.contacts-home_container, .contacts-list_main, #add-form {
+    margin-bottom: 70px;
+}
+
