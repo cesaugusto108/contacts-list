@@ -77,15 +77,10 @@ public class Dao {
             Contact contact = new Contact();
 
             while (resultSet.next()) {
-                String contactId = resultSet.getString(1);
-                String contactName = resultSet.getString(2);
-                String email = resultSet.getString(3);
-                String telephone = resultSet.getString(4);
-
-                contact.setId(contactId);
-                contact.setContactName(contactName);
-                contact.setEmail(email);
-                contact.setTelephone(telephone);
+                contact.setId(resultSet.getString(1));
+                contact.setContactName(resultSet.getString(2));
+                contact.setEmail(resultSet.getString(3));
+                contact.setTelephone(resultSet.getString(4));
             }
 
             return contact;
