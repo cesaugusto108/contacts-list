@@ -43,7 +43,10 @@ public class Controller extends HttpServlet {
         }
     }
 
-    private void listContacts(HttpServletRequest request, HttpServletResponse response) {
+    private void listContacts(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
         try {
             List<Contact> contactList =  dao.listContacts();
 
@@ -56,7 +59,10 @@ public class Controller extends HttpServlet {
         }
     }
 
-    private void editContact(HttpServletRequest request, HttpServletResponse response) {
+    private void editContact(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
         try {
             Contact selectedContact = dao.selectContact(request.getParameter("id"));
 
