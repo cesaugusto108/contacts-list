@@ -4,8 +4,8 @@ const pageElements = {
 	contactName: document.getElementById("form-name"),
 	email: document.getElementById("form-email"),
 	telephone: document.getElementById("form-phone"),
-	addBtn: document.getElementById("add-btn"),
-	addForm: document.getElementById("add-form"),
+	formBtn: document.querySelector(".form-btn"),
+	form: document.querySelector(".contact-form"),
 };
 
 // Functions
@@ -33,7 +33,7 @@ function validate() {
 		checkNameField();
 		checkPhoneField();
 	} else {
-		pageElements.addForm.submit();
+		pageElements.form.submit();
 	}
 }
 
@@ -51,6 +51,6 @@ function restorePhoneField() {
 
 // Event Listeners
 
-pageElements.addBtn.addEventListener("click", validate);
+pageElements.formBtn.addEventListener("click", validate);
 pageElements.contactName.addEventListener("click", restoreNameField);
 pageElements.telephone.addEventListener("click", restorePhoneField);
