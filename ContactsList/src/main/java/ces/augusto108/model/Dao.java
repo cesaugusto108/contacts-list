@@ -105,4 +105,18 @@ public class Dao {
             throw new RuntimeException(e);
         }
     }
+
+    public void deleteContact(Contact contact) {
+        String deleteContactQuery = "DELETE FROM Contacts WHERE ID = ?";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteContactQuery);
+
+            preparedStatement.setString(1, contact.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

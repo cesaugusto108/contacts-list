@@ -37,6 +37,9 @@ public class Controller extends HttpServlet {
             case "/update":
                 updateContact(request, response);
                 break;
+            case "/delete":
+                deleteContact(request, response);
+                break;
             default:
                 try {
                     response.sendRedirect("Contacts");
@@ -114,6 +117,21 @@ public class Controller extends HttpServlet {
             contact.setTelephone(request.getParameter("telephone"));
 
             dao.updateContact(contact);
+
+            response.sendRedirect("Contacts");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void deleteContact(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        try {
+            contact.setId(request.getParameter("id"));
+
+            dao.deleteContact(contact);
 
             response.sendRedirect("Contacts");
         } catch (IOException e) {
