@@ -19,7 +19,7 @@
 			<div class="col-12">
 				<div class="row justify-content-center">
 					<div class="col text-center">
-						<input type="button" class="btn btn-outline-success mt-4" id="add-btn" value="Add" />
+						<button class="btn btn-outline-primary mt-4" type="submit">Add</button>
 					</div>
 				</div>
 			</div>

@@ -33,4 +33,9 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/insert</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
 </web-app>

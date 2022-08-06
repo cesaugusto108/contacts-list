@@ -88,4 +88,21 @@ public class Dao {
             throw new RuntimeException(e);
         }
     }
+
+    public void updateContact(Contact contact) {
+        String updateContactQuery = "UPDATE Contacts SET CONTACT_NAME = ?, EMAIL = ?, TELEPHONE = ? WHERE ID = ?";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(updateContactQuery);
+
+            preparedStatement.setString(1, contact.getContactName());
+            preparedStatement.setString(2, contact.getEmail());
+            preparedStatement.setString(3, contact.getTelephone());
+            preparedStatement.setString(4, contact.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

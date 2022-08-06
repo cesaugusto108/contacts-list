@@ -34,6 +34,9 @@ public class Controller extends HttpServlet {
             case "/insert":
                 insertContact(request, response);
                 break;
+            case "/update":
+                updateContact(request, response);
+                break;
             default:
                 try {
                     response.sendRedirect("Contacts");
@@ -48,7 +51,7 @@ public class Controller extends HttpServlet {
             HttpServletResponse response
     ) {
         try {
-            List<Contact> contactList =  dao.listContacts();
+            List<Contact> contactList = dao.listContacts();
 
             request.setAttribute("Contacts", contactList);
 
@@ -95,8 +98,25 @@ public class Controller extends HttpServlet {
             dao.insertContact(contact);
 
             response.sendRedirect("Contacts");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        catch (IOException e) {
+    }
+
+    private void updateContact(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        try {
+            contact.setId(request.getParameter("id"));
+            contact.setContactName(request.getParameter("name"));
+            contact.setEmail(request.getParameter("email"));
+            contact.setTelephone(request.getParameter("telephone"));
+
+            dao.updateContact(contact);
+
+            response.sendRedirect("Contacts");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
