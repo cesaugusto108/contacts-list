@@ -1,6 +1,5 @@
 body {
 	font-family: "Montserrat", sans-serif;
-	/* background-color: whitesmoke; */
 	overflow-x: hidden;
 }
 
@@ -18,6 +17,7 @@ footer {
 
 a {
 	text-decoration: none;
+    outline: none;
 }
 
 .contacts-home_main {
@@ -41,5 +41,20 @@ a {
 
 .edit-cancel-btn {
     margin-top: -10px;
+}
+
+.contacts-dark_panel {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(10, 10, 10, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-delete_msg {
+    width: 180px;
+    margin-bottom: 210px;
 }
 

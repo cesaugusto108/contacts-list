@@ -37,6 +37,9 @@ public class Controller extends HttpServlet {
             case "/update":
                 updateContact(request, response);
                 break;
+            case "/confirm":
+                confirmDelete(request, response);
+                break;
             case "/delete":
                 deleteContact(request, response);
                 break;
@@ -130,11 +133,26 @@ public class Controller extends HttpServlet {
     ) {
         try {
             contact.setId(request.getParameter("id"));
-
+            System.out.println(contact.getId());
             dao.deleteContact(contact);
 
             response.sendRedirect("Contacts");
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void confirmDelete(
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        try {
+            Contact selectedContact = dao.selectContact(request.getParameter("id"));
+
+            request.setAttribute("Contact", selectedContact);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (IOException | ServletException e) {
             throw new RuntimeException(e);
         }
     }
